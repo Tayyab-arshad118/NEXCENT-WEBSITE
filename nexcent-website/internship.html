@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Internship Program - Nexcent Studios</title>
+    <link rel="icon" href="./assets/images/logo.png" type="image/png">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/internship.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="navbar-logo">
+                <img src="./assets/images/logo.jpg" alt="Nexcent Studios Logo" class="logo-img" style="height:56px;width:56px;vertical-align:middle;margin-right:0.7rem;" />
+                Nexcent Studios
+            </a>
+            <div class="menu-toggle" aria-label="Open menu" tabindex="0">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="navbar-links">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="internship.html" class="active">Internship</a>
+                <a href="courses.html">Courses</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Nexcent Studios Internship – Your Questions, Answered</h1>
+            <p>Gain real-world skills, work on real projects, and kickstart your career in tech.</p>
+            <button class="cta-button" onclick="openInternshipForm()">Apply Now</button>
+        </div>
+    </section>
+
+    <!-- Internship Form Modal -->
+    <div id="internshipFormModal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeInternshipForm()">&times;</button>
+            <form id="internshipForm" class="application-form">
+                <!-- 1. Personal Information -->
+                <div class="form-section">
+                    <h2>1. Personal Information</h2>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+
+                <!-- 2. Education -->
+                <div class="form-section">
+                    <h2>2. Education</h2>
+                    <div class="form-group">
+                        <label for="education">Current Education Level</label>
+                        <select id="education" name="education" required>
+                            <option value="">Select your education level</option>
+                            <option value="highschool">High School</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="bachelors">Bachelor's Degree</option>
+                            <option value="masters">Master's Degree</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group hidden" id="educationOther">
+                        <label for="educationOtherText">Please specify your education level</label>
+                        <input type="text" id="educationOtherText" name="educationOtherText">
+                    </div>
+                    <div class="form-group">
+                        <label for="institution">Institution Name</label>
+                        <input type="text" id="institution" name="institution" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="field">Field of Study</label>
+                        <input type="text" id="field" name="field" required>
+                    </div>
+                </div>
+
+                <!-- 3. Track Selection -->
+                <div class="form-section">
+                    <h2>3. Track Selection</h2>
+                    <div class="form-group">
+                        <label for="track">Choose your preferred track</label>
+                        <select id="track" name="track" required>
+                            <option value="">Select a track</option>
+                            <option value="webdev">Web Development</option>
+                            <option value="design">UI/UX Design</option>
+                            <option value="marketing">Digital Marketing</option>
+                            <option value="content">Content Writing</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 4. Experience -->
+                <div class="form-section">
+                    <h2>4. Experience</h2>
+                    <div class="form-group">
+                        <label>Have you done any internship before?</label>
+                        <div class="radio-group">
+                            <label>
+                                <input type="radio" name="hasInternship" value="yes"> Yes
+                            </label>
+                            <label>
+                                <input type="radio" name="hasInternship" value="no" checked> No
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group hidden" id="internshipDescGroup">
+                        <label for="internshipDesc">If Yes, briefly describe</label>
+                        <textarea id="internshipDesc" name="internshipDesc" rows="3"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="motivation">Why do you want to join Nexcent Studios' Internship Program? (50–100 words)</label>
+                        <textarea id="motivation" name="motivation" rows="4" required></textarea>
+                        <div class="word-count"><span id="wordCount">0</span>/100 words</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="portfolio">Portfolio / GitHub / Behance link (optional)</label>
+                        <input type="url" id="portfolio" name="portfolio">
+                    </div>
+                </div>
+
+                <!-- 5. Payment -->
+                <div class="form-section">
+                    <h2>5. Payment</h2>
+                    <div class="payment-info">
+                        <h3>Internship Fee: PKR 500 (one-time registration fee)</h3>
+                        <div class="payment-details">
+                            <p><strong>Payment Details:</strong></p>
+                            <p>JazzCash / Easypaisa / Bank Transfer</p>
+                            <p>Account Title: Nexcent Studios</p>
+                            <p>Account Number: 03XXXXXXXXX</p>
+                            <p>CNIC: XXXXXXXXXXXXXX</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="paymentProof">Upload Payment Proof Screenshot (JPEG, PNG, or PDF)</label>
+                        <input type="file" id="paymentProof" name="paymentProof" accept=".jpg,.jpeg,.png,.pdf" required>
+                        <div class="file-info">Maximum file size: 5MB</div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="cta-btn">Submit Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Quick Facts -->
+    <section class="quick-facts">
+        <div class="container">
+            <div class="facts-grid">
+                <div class="fact-card">
+                    <i data-feather="clock" class="fact-icon"></i>
+                    <h3>Duration</h3>
+                    <p>6 Weeks</p>
+                </div>
+                <div class="fact-card">
+                    <i data-feather="clock" class="fact-icon"></i>
+                    <h3>Time Commitment</h3>
+                    <p>10–15 hrs/week</p>
+                </div>
+                <div class="fact-card">
+                    <i data-feather="monitor" class="fact-icon"></i>
+                    <h3>Mode</h3>
+                    <p>100% Remote</p>
+                </div>
+                <div class="fact-card">
+                    <i data-feather="credit-card" class="fact-icon"></i>
+                    <h3>Fee</h3>
+                    <p>₨500</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internship Details -->
+    <section class="details-section">
+        <div class="container">
+            <!-- Remote Freedom -->
+            <div class="detail-row">
+                <div class="detail-image">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <div class="detail-content">
+                    <h2>Remote Freedom</h2>
+                    <p>You don't have to travel anywhere or stick to one place. Whether you're at home, in your hostel, or sitting in your favorite café, you can work as long as you have an internet connection and the passion to learn.</p>
+                </div>
+            </div>
+
+            <!-- Skills That Matter -->
+            <div class="detail-row reverse">
+                <div class="detail-content">
+                    <h2>Skills That Actually Matter</h2>
+                    <p>We focus on things you can actually use in the real world — no random theory. You'll work on actual projects, get guidance from mentors, and receive a certificate that employers will actually take seriously.</p>
+                </div>
+                <div class="detail-image">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+            </div>
+
+            <!-- Your First Big Step -->
+            <div class="detail-row">
+                <div class="detail-image">
+                    <i class="fas fa-star"></i>
+                </div>
+                <div class="detail-content">
+                    <h2>Your First Big Step</h2>
+                    <p>By the end of this internship, you won't just have experience — you'll have a portfolio full of real work you can show to clients or employers, plus a network of people who can help you in your career.</p>
+                </div>
+            </div>
+
+            <!-- Your Time, Your Pace -->
+            <div class="detail-row reverse">
+                <div class="detail-content">
+                    <h2>Your Time, Your Pace</h2>
+                    <p>This internship is designed to fit around your life. You'll work about 10–15 hours a week, attend just two short meetings, and complete tasks when it's most convenient for you.</p>
+                </div>
+                <div class="detail-image">
+                    <i class="fas fa-clock"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Apply -->
+    <section class="how-to-apply">
+        <div class="container">
+            <h2>📋 3 Simple Steps</h2>
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="step-number">1</div>
+                    <h3>Fill out the form</h3>
+                    <p>Quick and easy application process</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">2</div>
+                    <h3>Join onboarding</h3>
+                    <p>We'll guide you through everything</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="step-number">3</div>
+                    <h3>Start working</h3>
+                    <p>Begin your journey with real projects</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Fee -->
+    <section class="registration-section">
+        <div class="container">
+            <div class="fee-card">
+                <i data-feather="credit-card" class="fee-icon"></i>
+                <h2>💳 ₨500 – Your Commitment</h2>
+                <p>This small fee helps cover the tools and resources we'll provide, but more importantly, it makes sure that everyone joining is genuinely committed. Think of it as a tiny investment in yourself that could be the start of something much bigger.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Modal -->
+    <div id="internshipFormModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeInternshipForm()">
+                <i data-feather="x"></i>
+            </button>
+            <h2>Apply for Internship</h2>
+            <!-- Form content here -->
+            <form id="internshipForm" class="internship-form">
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" id="fullName" name="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Education</h3>
+                    <div class="form-group">
+                        <label for="education">Current Education Level</label>
+                        <select id="education" name="education" required>
+                            <option value="">Select Education Level</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="undergraduate">Undergraduate</option>
+                            <option value="graduate">Graduate</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="institution">Institution Name</label>
+                        <input type="text" id="institution" name="institution" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Internship Track</h3>
+                    <div class="form-group">
+                        <label for="track">Select Your Track</label>
+                        <select id="track" name="track" required>
+                            <option value="">Choose a Track</option>
+                            <option value="web-dev">Web Development</option>
+                            <option value="app-dev">App Development</option>
+                            <option value="ui-ux">UI/UX Design</option>
+                            <option value="marketing">Digital Marketing</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer"></footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/internship.js"></script>
+</body>
+</html>
+  
+  <main>
+    <section class="section">
+      <h1>Internship Registration Form</h1>
+      <div class="card internship-form-card">
+        <form id="internship-form" class="internship-form" enctype="multipart/form-data">
+          <!-- 1. Personal Information -->
+          <div class="form-section">
+            <h2>1. Personal Information</h2>
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input type="text" id="fullName" name="fullName" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="dob">Date of Birth (DD/MM/YYYY)</label>
+              <input type="date" id="dob" name="dob" required>
+            </div>
+
+            <div class="form-group">
+              <label>Gender</label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="gender" value="male" required>
+                  <span>Male</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="gender" value="female">
+                  <span>Female</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="gender" value="prefer-not-say">
+                  <span>Prefer not to say</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cnic">CNIC / B-Form Number</label>
+              <input type="text" id="cnic" name="cnic" required>
+            </div>
+
+            <div class="form-group">
+              <label for="whatsapp">WhatsApp Number</label>
+              <input type="tel" id="whatsapp" name="whatsapp" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+              <label for="location">City & Province</label>
+              <input type="text" id="location" name="location" required>
+            </div>
+          </div>
+
+          <!-- 2. Education -->
+          <div class="form-section">
+            <h2>2. Education</h2>
+            <div class="form-group">
+              <label for="education">Current Education Level</label>
+              <select id="education" name="education" required>
+                <option value="">Select Education Level</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="diploma">Diploma</option>
+                <option value="undergraduate">Undergraduate</option>
+                <option value="graduate">Graduate</option>
+                <option value="other">Other</option>
+              </select>
+              <input type="text" id="educationOther" name="educationOther" placeholder="Specify other education" class="hidden">
+            </div>
+
+            <div class="form-group">
+              <label for="institution">Institution Name</label>
+              <input type="text" id="institution" name="institution" required>
+            </div>
+
+            <div class="form-group">
+              <label for="fieldStudy">Field of Study / Major</label>
+              <input type="text" id="fieldStudy" name="fieldStudy" required>
+            </div>
+
+            <div class="form-group">
+              <label for="gradYear">Expected Graduation Year</label>
+              <input type="number" id="gradYear" name="gradYear" min="2024" max="2030" required>
+            </div>
+          </div>
+
+          <!-- 3. Internship Details -->
+          <div class="form-section">
+            <h2>3. Internship Details</h2>
+            <div class="form-group">
+              <label for="track">Internship Track</label>
+              <select id="track" name="track" required>
+                <option value="">Select Track</option>
+                <option value="web-dev">Web Development</option>
+                <option value="app-dev">App Development</option>
+                <option value="ui-ux">UI/UX Design</option>
+                <option value="marketing">Social Media Marketing</option>
+                <option value="content">Content Creation</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Skill Level</label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="skillLevel" value="beginner" required>
+                  <span>Beginner</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="skillLevel" value="intermediate">
+                  <span>Intermediate</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="skillLevel" value="advanced">
+                  <span>Advanced</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Are you available for 6 weeks (part-time remote)?</label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="availability" value="yes" required>
+                  <span>Yes</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="availability" value="no">
+                  <span>No</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- 4. Experience & Motivation -->
+          <div class="form-section">
+            <h2>4. Experience & Motivation</h2>
+            <div class="form-group">
+              <label>Have you done any internships before?</label>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="hasInternship" value="yes" required>
+                  <span>Yes</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="hasInternship" value="no">
+                  <span>No</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="form-group hidden" id="internshipDescGroup">
+              <label for="internshipDesc">If Yes, briefly describe</label>
+              <textarea id="internshipDesc" name="internshipDesc" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="motivation">Why do you want to join Nexcent Studios' Internship Program? (50–100 words)</label>
+              <textarea id="motivation" name="motivation" rows="4" required></textarea>
+              <div class="word-count"><span id="wordCount">0</span>/100 words</div>
+            </div>
+
+            <div class="form-group">
+              <label for="portfolio">Portfolio / GitHub / Behance link (optional)</label>
+              <input type="url" id="portfolio" name="portfolio">
+            </div>
+          </div>
+
+          <!-- 5. Payment -->
+          <div class="form-section">
+            <h2>5. Payment</h2>
+            <div class="payment-info">
+              <h3>Internship Fee: PKR 500 (one-time registration fee)</h3>
+              <div class="payment-details">
+                <p><strong>Payment Details:</strong></p>
+                <p>JazzCash / Easypaisa / Bank Transfer</p>
+                <p>Account Title: Nexcent Studios</p>
+                <p>Account Number: 03XXXXXXXXX</p>
+                <p>CNIC: XXXXXXXXXXXXXX</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="paymentProof">Upload Payment Proof Screenshot (JPEG, PNG, or PDF)</label>
+              <input type="file" id="paymentProof" name="paymentProof" accept=".jpg,.jpeg,.png,.pdf" required>
+              <div class="file-info">Maximum file size: 5MB</div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="cta-btn">Submit Application</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div>Contact: <a href="mailto:nexcentstudios@gmail.com">nexcentstudios@gmail.com</a></div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/nexcentstudios" aria-label="Instagram" target="_blank" rel="noopener"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line></svg></a>
+      <a href="https://www.linkedin.com/company/nexcent-studios/" aria-label="LinkedIn" target="_blank" rel="noopener"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg></a>
+      <a href="https://www.facebook.com/profile.php?id=61578594644291" aria-label="Facebook" target="_blank" rel="noopener"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+    </div>
+    <div>© Nexcent Studios. All rights reserved.</div>
+  </footer>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

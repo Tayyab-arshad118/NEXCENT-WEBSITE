@@ -1,0 +1,235 @@
+/* Modern Contact Page Styling */
+.contact-page {
+  min-height: calc(100vh - 180px);
+  padding: 6rem 2rem 4rem;
+  background: var(--background-dark);
+  position: relative;
+}
+
+.contact-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+  position: relative;
+}
+
+/* Form Section */
+.contact-form-section {
+  background: rgba(0, 215, 95, 0.03);
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 215, 95, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.contact-form-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 215, 95, 0.2), 
+    transparent
+  );
+  mask: linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-field {
+  position: relative;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1.5px solid var(--input-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--text-main);
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+  border-color: var(--primary-green);
+  background: rgba(0, 215, 95, 0.05);
+  outline: none;
+  box-shadow: 
+    0 0 15px rgba(0, 215, 95, 0.3),
+    0 0 30px rgba(0, 215, 95, 0.1);
+}
+
+.form-field textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.contact-form button {
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  background: var(--primary-green);
+  color: var(--background-dark);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-form button:hover {
+  background: var(--accent-green);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 215, 95, 0.3);
+}
+
+/* Info Section */
+.contact-info-section {
+  padding: 2.5rem;
+  background: rgba(0, 215, 95, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(0, 215, 95, 0.1);
+  backdrop-filter: blur(10px);
+  position: relative;
+}
+
+.contact-info-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(0, 215, 95, 0.2), 
+    transparent
+  );
+  mask: linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.contact-info-section h1 {
+  font-size: 2.5rem;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  font-weight: 700;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.info-block {
+  margin-bottom: 2rem;
+}
+
+.info-block h3 {
+  color: var(--primary-green);
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-block p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-links a {
+  color: var(--text-main);
+  text-decoration: none;
+  padding: 0.5rem 1.2rem;
+  background: rgba(0, 215, 95, 0.05);
+  border: 1.5px solid var(--input-border);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.social-links a:hover {
+  background: var(--primary-green);
+  color: var(--background-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 215, 95, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .contact-form-section {
+    padding: 2rem;
+  }
+  
+  .contact-info-section {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-page {
+    padding: 2rem 1rem;
+  }
+  
+  .contact-info-section h1 {
+    font-size: 2rem;
+  }
+  
+  .social-links {
+    flex-direction: column;
+  }
+  
+  .social-links a {
+    text-align: center;
+  }
+}
